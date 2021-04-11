@@ -1,0 +1,10 @@
+x1 A B A_bar B_bar P XOR
+x2 P_bar P inv
+x3 A B A_bar B_bar G AND
+x4 G_bar G inv
+x5 cin P cin_bar P_bar c1 AND
+x6 c1_bar c1 inv
+x7 P cin P_bar cin_bar S XOR
+x8 c1 G c1_bar G_bar cout OR
+x9 cout_bar cout inv
+x10 cout gnd inv
