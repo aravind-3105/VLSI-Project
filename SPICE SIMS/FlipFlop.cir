@@ -1,0 +1,55 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_N={20*LAMBDA}
+.param width_P={40*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vd D  0 pulse 0 1.8 0ns 100ps 100ps 10ns 20ns
+vclk clk  0 pulse 0 1.8 10ns 100ps 100ps 30ns 60ns
+vclk1 clk_bar  0 pulse 1.8 0 10ns 100ps 100ps 30ns 60ns
+
+.subckt inv yi xi vdd gnd
+M1      yi       xi       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2      yi       xi       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends inv
+
+
+.subckt PM D G S vdd gnd
+M1      D        G       S     S  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+.ends PM
+
+.subckt NM D G S vdd gnd
+M1      D       G       S     S  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends NM
+
+
+x1 d clk_bar J1 vdd gnd PM
+x2 d clk J1 vdd gnd NM
+x3 Q_bar J1 vdd gnd inv
+x4 Q Q_bar vdd gnd inv
+x5 Q clk_bar J1 vdd gnd PM
+x6 Q clk J1 vdd gnd NM
+
+.ic v(Q) = 0
+* .ic v(clk) = 0
+
+.tran 1n 60n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(D)
+plot v(clk)
+plot v(clk_bar)
+plot v(Q)
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

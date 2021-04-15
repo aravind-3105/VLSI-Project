@@ -6,9 +6,15 @@
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
-vd1 a  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
-vd2 b  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
-vd3 ci 0 pulse 0 0 0ns 100ps 100ps 20ns 60ns
+vd1a a1  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
+vd1b b1  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
+vd2a a2  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
+vd2b b2  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
+vd3a a3  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
+vd3b b3  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
+vd4a a4  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
+vd4b b4  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
+vd3 ci1 0 pulse 0 0 0ns 100ps 100ps 20ns 60ns
 
 
 .subckt xor_subckt a b y vdd gnd
@@ -78,17 +84,57 @@ M6      y       nor       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
 .ends or_subckt
 
-
+//One-Bit
+///////////////////////////////////////////////////////
 //Generate
-x1 a b P vdd gnd xor_subckt
+x1 a1 b1 P1 vdd gnd xor_subckt
 //Propagate
-x2 a b G vdd gnd and_subckt
+x2 a1 b1 G1 vdd gnd and_subckt
 //Left-Half of Carry Out
-x3 P ci L vdd gnd and_subckt
+x3 P1 ci1 L1 vdd gnd and_subckt
 * //Right-Half of Carry Out
-x4 L G Cout vdd gnd or_subckt
+x4 L1 G1 Cout1 vdd gnd or_subckt
 //Sum
-x5 P ci Sum vdd gnd xor_subckt
+x5 P1 ci1 Sum1 vdd gnd xor_subckt
+//////////////////////////////////////////////////////
+//Two-Bit
+//Generate
+x6 a2 b2 P2 vdd gnd xor_subckt
+//Propagate
+x7 a2 b2 G2 vdd gnd and_subckt
+//Left-Half of Carry Out
+x8 P2 Cout1 L2 vdd gnd and_subckt
+* //Right-Half of Carry Out
+x9 L2 G2 Cout2 vdd gnd or_subckt
+//Sum
+x10 P2 Cout1 Sum2 vdd gnd xor_subckt
+/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//Third-Bit
+//Generate
+x11 a3 b3 P3 vdd gnd xor_subckt
+//Propagate
+x12 a3 b3 G3 vdd gnd and_subckt
+//Left-Half of Carry Out
+x13 P3 Cout2 L3 vdd gnd and_subckt
+* //Right-Half of Carry Out
+x14 L3 G3 Cout3 vdd gnd or_subckt
+//Sum
+x15 P3 Cout2 Sum3 vdd gnd xor_subckt
+/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//Fourth-Bit
+//Generate
+x16 a4 b4 P4 vdd gnd xor_subckt
+//Propagate
+x17 a4 b4 G4 vdd gnd and_subckt
+//Left-Half of Carry Out
+x18 P4 Cout3 L4 vdd gnd and_subckt
+* //Right-Half of Carry Out
+x19 L4 G4 Cout4 vdd gnd or_subckt
+//Sum
+x20 P4 Cout3 Sum4 vdd gnd xor_subckt
+/////////////////////////////////////////////////////
 
 
 .tran 1n 60n
@@ -98,12 +144,25 @@ set color0=white
 set color1=black
 
 run
-plot v(a)
-plot v(b)
-plot v(ci)
-plot v(P)
-plot v(G)
-plot v(Sum)
-plot v(Cout)
+* plot v(a1)
+* plot v(b1)
+* plot v(ci1)
+* plot v(P1)
+* plot v(G1)
+* plot v(Sum1)
+* plot v(Cout1)
+* plot v(a2) v(b2)
+* plot v(P2) v(G2)
+* plot v(Sum2)
+* plot v(Cout2)
+* plot v(a3) v(b3)
+* plot v(P3) v(G3)
+* plot v(Sum3)
+plot v(Cout3)
+plot v(a4) v(b4)
+
+plot v(P4) v(G4)
+plot v(Sum4)
+plot v(Cout4)
 set curplottitle= "Aravind Narayanan-2019102014"
 .endc

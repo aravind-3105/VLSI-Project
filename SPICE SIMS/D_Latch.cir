@@ -1,0 +1,46 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_N={20*LAMBDA}
+.param width_P={40*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vd     d     0 pulse 1.8 0 0ns 100ps 100ps 20ns  30ns
+vd_bar d_bar 0 pulse 0 1.8 0ns 100ps 100ps 20ns  30ns
+
+vclk   clk   0 pulse 0 1.8 0ns 100ps 100ps 20ns  40ns
+
+
+.subckt nand_subckt a b nand vdd gnd
+* Layer-1
+M1      nand       b       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M2      nand       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M3      nand       a       J     J  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+M4      J          b      gnd gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends nand_subckt
+
+x1 d clk S vdd gnd nand_subckt
+x2 d_bar clk R vdd gnd nand_subckt
+x3 S Q_bar Q vdd gnd nand_subckt
+x4 R Q Q_bar vdd gnd nand_subckt
+
+.ic v(Q) = 0
+.tran 1n 80n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(d)
+plot v(d_bar)
+plot v(clk)
+plot v(Q)
+plor v(Q_bar)
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

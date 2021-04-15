@@ -6,9 +6,18 @@
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
-vd1 a  0 pulse 1.8 0 0ns 100ps 100ps 10ns 60ns
-vd2 b  0 pulse 0 1.8 0ns 100ps 100ps 20ns 60ns
+vd1     a_d     0 pulse 1.8 0 0ns 100ps 100ps 5ns  30ns
+vd_bar1 a_d_bar 0 pulse 0 1.8 0ns 100ps 100ps 5ns  30ns
+
+vd2     b_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
+vd_bar2 b_d_bar 0 pulse 0 1.8 0ns 100ps 100ps 10ns  30ns
+
 vd3 ci 0 pulse 0 0 0ns 100ps 100ps 20ns 60ns
+
+
+
+vclk   clk   0 pulse 0   1.8 0ns 100ps 100ps 20ns  40ns
+vclk_bar clk_bar 0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
 
 
 .subckt xor_subckt a b y vdd gnd
@@ -78,32 +87,81 @@ M6      y       nor       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
 .ends or_subckt
 
+.subckt nand_subckt a b nand vdd gnd
+M1      nand       b       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M2      nand       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M3      nand       a       J     J  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+M4      J          b      gnd gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends nand_subckt
+
+.subckt inv yi xi vdd gnd
+M1      yi       xi       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2      yi       xi       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends inv
+
+.subckt latch d d_bar e Q Q_bar vdd gnd 
+    xx1 d e S vdd gnd nand_subckt
+    xx2 d_bar e R vdd gnd nand_subckt
+    xx3 S Q_bar Q vdd gnd nand_subckt
+    xx4 R Q Q_bar vdd gnd nand_subckt
+.ends latch
+
+.subckt flipflop d d_bar clk clk_bar Q vdd gnd 
+xxx1 d d_bar clk_bar Q1 Q1_bar vdd gnd latch
+xxx2 Q1 Q1_bar clk Q Q_bar vdd gnd latch 
+.ends flipflop
+
+x1 a_d a_d_bar clk clk_bar a vdd gnd flipflop
+x2 b_d b_d_bar clk clk_bar b vdd gnd flipflop
 
 //Generate
-x1 a b P vdd gnd xor_subckt
+x3 a b P vdd gnd xor_subckt
 //Propagate
-x2 a b G vdd gnd and_subckt
+x4 a b G vdd gnd and_subckt
 //Left-Half of Carry Out
-x3 P ci L vdd gnd and_subckt
+x5 P ci L vdd gnd and_subckt
 * //Right-Half of Carry Out
-x4 L G Cout vdd gnd or_subckt
+x6 L G Cout vdd gnd or_subckt
 //Sum
-x5 P ci Sum vdd gnd xor_subckt
+x7 P ci Sum vdd gnd xor_subckt
 
 
-.tran 1n 60n
+x8 Sum_bar Sum vdd gnd inv
+x9 Cout_bar Cout vdd gnd inv
+x10 Sum Sum_bar clk clk_bar S vdd gnd flipflop
+x11 Cout Cout_bar clk clk_bar Co vdd gnd flipflop
+
+
+.ic v(clk) = 0
+.ic v(clk_bar) = 1.8
+.ic v(b_d) = 0
+.ic v(b_d_bar) = 1.8
+.ic v(a_d) = 0
+.ic v(a_d_bar) = 1.8
+
+
+.tran 1n 90n
 .control
 set hcopypscolor = 1
 set color0=white
 set color1=black
 
 run
-plot v(a)
-plot v(b)
-plot v(ci)
-plot v(P)
-plot v(G)
-plot v(Sum)
-plot v(Cout)
+plot v(a)/1.8
+plot v(a_d)/1.8
+plot v(b)/1.8
+plot v(b_d)/1.8
+plot v(Sum)/1.8
+plot v(S)/1.8
+plot v(Cout)/1.8
+plot v(Co)/1.8
+plot v(clk)/1.8
 set curplottitle= "Aravind Narayanan-2019102014"
 .endc
