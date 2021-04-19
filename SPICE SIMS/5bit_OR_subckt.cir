@@ -1,0 +1,66 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_N={20*LAMBDA}
+.param width_P={40*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vd1 a 0 pulse 1.8 0 0ns 100ps 100ps 5ns 10ns
+vd2 b 0 pulse 1.8 0 0ns 100ps 100ps 10ns 20ns
+vd3 c 0 pulse 1.8 0 0ns 100ps 100ps 20ns 40ns
+vd4 d 0 pulse 1.8 0 0ns 100ps 100ps 40ns 80ns
+vd5 e 0 pulse 1.8 0 0ns 100ps 100ps 80ns 160ns
+
+.subckt or5_subckt a b c d e y vdd gnd
+// NOR
+M1      J1       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2      J2       b       J1      J1  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M3      J3       c       J2      J2  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M4      J4      d        J3      J3  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M5      nor     e        J4      J4  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M6      nor       a     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M7      nor       b     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M8      nor       c     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M9      nor       d     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M10     nor       e     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+// Inverter
+M11      y       nor       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M12      y       nor       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends or5_subckt
+
+x1 a b c d e y vdd gnd or5_subckt
+
+.tran 0.01n 160n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(a)/1.8 (v(b)/1.8)+2  (v(c)/1.8)+4  (v(d)/1.8)+6 (v(e)/1.8)+8 (v(y)/1.8)+10
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

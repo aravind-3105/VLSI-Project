@@ -1,8 +1,8 @@
 .include TSMC_180nm.txt
 .param SUPPLY=1.8
 .param LAMBDA=0.09u
-.param width_N={4*LAMBDA}
-.param width_P={8*LAMBDA}
+.param width_N={20*LAMBDA}
+.param width_P={40*LAMBDA}
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
@@ -98,7 +98,7 @@ x4 L1 G1 Cout1 vdd gnd or_subckt
 //Sum
 x5 P1 ci1 Sum1 vdd gnd xor_subckt
 //////////////////////////////////////////////////////
-//Two-Bit
+//Two-Bit 
 //Generate
 x6 a2 b2 P2 vdd gnd xor_subckt
 //Propagate

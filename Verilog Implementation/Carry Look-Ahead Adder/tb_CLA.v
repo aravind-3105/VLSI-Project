@@ -16,7 +16,7 @@ module tb;
 
 initial clk = 1;
     initial begin
-      $monitor( $time,"a=%d,b=%dsum=%d,,cout=%d,",a,b,sum,C_out[3]);
+      $monitor("\ta=%d,b=%dsum=%d,cout=%d,",a,b,sum,C_out[3]);
         $dumpfile("DUMP_CLA.vcd");
      	$dumpvars(0,tb);
 		a = 0;
