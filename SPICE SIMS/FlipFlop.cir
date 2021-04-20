@@ -6,9 +6,8 @@
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
-vd     d     0 pulse 1.8 0 0ns 100ps 100ps 15ns  30ns
-vclk   clk   0 pulse 0 1.8 20ns 100ps 100ps 10ns  20ns
-
+vd     d     0 pulse 1.8 0 12ns 100ps 100ps 5ns  25ns
+vclk   clk   0 pulse 0 1.8 10ns 100ps 100ps 10ns  20ns
 
 .subckt FlipFlop d clk q vdd gnd
 // Layer-1
@@ -49,16 +48,14 @@ M12      q       q_bar   gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 .ends FlipFlop
 
 
-
-
 x1 d clk q vdd gnd FlipFlop
 .tran 1n 120n
 .control
 set hcopypscolor = 1
 set color0=white
 set color1=black
-
 run
+set curplottitle= "Aravind Narayanan-2019102014-FlipFlop"
 plot (v(d)/1.8) (v(clk)/1.8)+2 (v(q)/1.8)+4
-set curplottitle= "Aravind Narayanan-2019102014"
 .endc
+

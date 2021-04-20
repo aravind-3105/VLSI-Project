@@ -11,8 +11,6 @@ vd2 b 0 pulse 1.8 0 0ns 100ps 100ps 20ns 40ns
 vd3 c 0 pulse 1.8 0 0ns 100ps 100ps 40ns 80ns
 vd4 d 0 pulse 1.8 0 0ns 100ps 100ps 80ns 160ns
 
-
-
 .subckt and4_subckt a b c d y vdd gnd
 //NAND
 M1      nand       a       vdd    vdd  CMOSP   W={width_P}   L={2*LAMBDA}
@@ -38,7 +36,6 @@ M7      J2         c       J3     J3   CMOSN   W={width_N}   L={2*LAMBDA}
 
 M8      J3         d      gnd    gnd   CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
-
 //Inverter
 M9      y       nand       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
@@ -50,14 +47,14 @@ M10     y       nand       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 x1 a b c d y vdd gnd and4_subckt
 
 .tran 0.01n 160n
-
-
 .control
 set hcopypscolor = 1
 set color0=white
 set color1=black
 
 run
-plot v(a)/1.8 (v(b)/1.8)+2  (v(c)/1.8)+4  (v(d)/1.8)+6 (v(y)/1.8)+8
 set curplottitle= "Aravind Narayanan-2019102014"
+plot v(a)/1.8 (v(b)/1.8)+2  (v(c)/1.8)+4  (v(d)/1.8)+6 (v(y)/1.8)+8
 .endc
+
+

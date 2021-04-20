@@ -10,20 +10,17 @@ vd1 a 0 pulse 1.8 0 0ns 100ps 100ps 20ns 60ns
 vd2 b 0 pulse 0 1.8 10ns 100ps 100ps 50ns 60ns
 
 .subckt or_subckt a b y vdd gnd
-* Layer-1
 M1      J1       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
 
 M2      nor      b       J1      J1  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
 
-
 M3      nor       a     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
 
 M4      nor       b     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
-
 
 M5      y       nor       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
@@ -39,10 +36,8 @@ x1 a b y vdd gnd or_subckt
 set hcopypscolor = 1
 set color0=white
 set color1=black
-
 run
-plot v(a)
-plot v(b)
-plot v(y)
 set curplottitle= "Aravind Narayanan-2019102014"
+plot v(a) v(b)+2 v(y)+4
 .endc
+

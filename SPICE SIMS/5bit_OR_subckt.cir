@@ -43,7 +43,6 @@ M9      nor       d     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
 
 M10     nor       e     gnd   gnd   CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
-
 // Inverter
 M11      y       nor       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
@@ -53,14 +52,12 @@ M12      y       nor       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 .ends or5_subckt
 
 x1 a b c d e y vdd gnd or5_subckt
-
 .tran 0.01n 160n
 .control
-set hcopypscolor = 1
+set hcopypscolor = 1 
 set color0=white
 set color1=black
-
 run
-plot v(a)/1.8 (v(b)/1.8)+2  (v(c)/1.8)+4  (v(d)/1.8)+6 (v(e)/1.8)+8 (v(y)/1.8)+10
 set curplottitle= "Aravind Narayanan-2019102014"
+plot v(a)/1.8 (v(b)/1.8)+2  (v(c)/1.8)+4  (v(d)/1.8)+6 (v(e)/1.8)+8 (v(y)/1.8)+10
 .endc
