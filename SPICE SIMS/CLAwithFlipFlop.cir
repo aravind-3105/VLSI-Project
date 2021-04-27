@@ -291,7 +291,7 @@ M11      y       nand       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 
 M12     y       nand       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
 + AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
-.ends and4_subckt
+.ends and5_subckt
 
 
 .subckt FlipFlop d clk q vdd gnd
@@ -340,6 +340,7 @@ xy11 a1_d clk a1 vdd gnd FlipFlop
 xy21 a2_d clk a2 vdd gnd FlipFlop
 xy12 a3_d clk a3 vdd gnd FlipFlop
 xy22 a4_d clk a4 vdd gnd FlipFlop
+
 xy13 b1_d clk b1 vdd gnd FlipFlop
 xy23 b2_d clk b2 vdd gnd FlipFlop
 xy14 b3_d clk b3 vdd gnd FlipFlop
@@ -385,16 +386,12 @@ x24 P2 Cout1 Sum2 vdd gnd xor_subckt
 x25 P3 Cout2 Sum3 vdd gnd xor_subckt
 x26 P4 Cout3 Sum4 vdd gnd xor_subckt
 
+
 xS1 Sum1 clk S1 vdd gnd FlipFlop
-* xC1 Cout1 clk Co1 vdd gnd FlipFlop
-
 xS2 Sum2 clk S2 vdd gnd FlipFlop
-* xC2 Cout2 clk Co2 vdd gnd FlipFlop
-
 xS3 Sum3 clk S3 vdd gnd FlipFlop
-* xC3 Cout3 clk Co3 vdd gnd FlipFlop
-
 xS4 Sum4 clk S4 vdd gnd FlipFlop
+
 xC4 Cout4 clk Co4 vdd gnd FlipFlop
 
 

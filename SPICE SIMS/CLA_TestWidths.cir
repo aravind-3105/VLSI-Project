@@ -1,21 +1,20 @@
 .include TSMC_180nm.txt
 .param SUPPLY=1.8
 .param LAMBDA=0.09u
-.param width_N={20*LAMBDA}
-.param width_P={40*LAMBDA}
+.param width_N={10*LAMBDA}
+.param width_P={20*LAMBDA}
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
 vd1a a1  0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
-vd2a a2  0 pulse 1.8 0 0ns 100ps 100ps 40ns  80ns
-vd3a a3  0 pulse 1.8 0 0ns 100ps 100ps 80ns  160ns
-vd4a a4  0 pulse 1.8 0 0ns 100ps 100ps 160ns 320ns
+vd2a a2  0 pulse 0 0 0ns 100ps 100ps 40ns  80ns
+vd3a a3  0 pulse 0 0 0ns 100ps 100ps 80ns  160ns
+vd4a a4  0 pulse 0 0 0ns 100ps 100ps 160ns 320ns
 
 vd1b b1  0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
-vd2b b2  0 pulse 1.8 0 0ns 100ps 100ps 40ns  80ns
-vd3b b3  0 pulse 1.8 0 0ns 100ps 100ps 80ns  160ns
-vd4b b4  0 pulse 1.8 0 0ns 100ps 100ps 160ns 320ns
-vd3  Ci 0 pulse 0 0 0ns 100ps 100ps 20ns 160ns
+vd2b b2  0 pulse 0 0 0ns 100ps 100ps 40ns  80ns
+vd3b b3  0 pulse 0 0 0ns 100ps 100ps 80ns  160ns
+vd4b b4  0 pulse 0 0 0ns 100ps 100ps 160ns 320ns
 
 
 .subckt xor_subckt a b y vdd gnd
@@ -238,14 +237,27 @@ x8 a4 b4 G4 vdd gnd and_subckt
         x17 G4 T4_1 T4_2 T4_3 Cout4 vdd gnd or4_subckt
 
 // Sum 
-x18 P1  gnd   Sum1 vdd gnd xor_subckt
+x18 P1  gnd  Sum1 vdd gnd xor_subckt
 x19 P2  G1   Sum2 vdd gnd xor_subckt
 x20 P3 Cout2 Sum3 vdd gnd xor_subckt
 x21 P4 Cout3 Sum4 vdd gnd xor_subckt
 
 
 
-.tran 0.01n 320n
+.ic v(a1) = 0
+.ic v(b1) = 0
+.ic v(a2) = 0
+.ic v(b2) = 0
+.ic v(a3) = 0
+.ic v(b3) = 0
+.ic v(a4) = 0
+.ic v(b4) = 0
+.ic v(Sum1) = 0
+.ic v(Sum2) = 0
+.ic v(Sum3) = 0
+.ic v(Sum4) = 0
+.ic v(Cout4) = 0
+.tran 0.01n 40n
 .control
 set hcopypscolor = 1
 set color0=white
@@ -256,12 +268,9 @@ plot v(a1)/1.8 ((v(b1)/1.8)+4)
 plot v(a2)/1.8 ((v(b2)/1.8)+4)
 plot v(a3)/1.8 ((v(b3)/1.8)+4)
 plot v(a4)/1.8 ((v(b4)/1.8)+4)
-
-
 plot (v(a1)+(2*v(a2))+(4*v(a3))+(8*v(a4)))/1.8
 plot (v(b1)+(2*v(b2))+(4*v(b3))+(8*v(b4)))/1.8
 plot (v(Sum1)+(2*v(Sum2))+(4*v(Sum3))+(8*v(Sum4)))/1.8
-* plot v(Ci)/1.8
 plot v(Cout4)/1.8
 set curplottitle= "Aravind Narayanan-2019102014"
 .endc
