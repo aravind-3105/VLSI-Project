@@ -1,0 +1,81 @@
+* SPICE3 file created from 2AND_WithLabel.ext - technology: scmos
+.option scale=0.09u
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param W = {10*LAMBDA}
+.param width_N={10*LAMBDA}
+.param width_P={20*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vdA1     A     0 pulse 1.8 0 0ns 100ps 100ps 5ns  30ns
+vdB1     B     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
+
+
+* M1000 a_bar A vdd w_n1_0# CMOSP w=20 l=2
+* +  ad=100 pd=50 as=400 ps=200
+* M1001 a_30_6# a_bar vdd w_n1_0# CMOSP w=20 l=2
+* +  ad=120 pd=52 as=0 ps=0
+* M1002 out B a_30_6# w_n1_0# CMOSP w=20 l=2
+* +  ad=260 pd=106 as=0 ps=0
+* M1003 a_66_6# a_43_n12# out w_n1_0# CMOSP w=20 l=2
+* +  ad=100 pd=50 as=0 ps=0
+* M1004 vdd b_bar a_66_6# w_n1_0# CMOSP w=20 l=2
+* +  ad=0 pd=0 as=0 ps=0
+* M1005 vdd B b_bar w_n1_0# CMOSP w=20 l=2
+* +  ad=0 pd=0 as=100 ps=50
+* M1006 a_bar A gnd gnd CMOSN w=10 l=2
+* +  ad=50 pd=30 as=200 ps=120
+* M1007 a_29_n32# B gnd gnd CMOSN w=10 l=2
+* +  ad=160 pd=52 as=0 ps=0
+* M1008 out a_43_n12# a_29_n32# gnd CMOSN w=10 l=2
+* +  ad=130 pd=66 as=0 ps=0
+* M1009 a_66_n32# a_bar out gnd CMOSN w=10 l=2
+* +  ad=50 pd=30 as=0 ps=0
+* M1010 gnd b_bar a_66_n32# gnd CMOSN w=10 l=2
+* +  ad=0 pd=0 as=0 ps=0
+* * M1011 gnd B b_bar gnd CMOSN w=10 l=2
+* * +  ad=0 pd=0 as=50 ps=30
+* C0 a_bar gnd 1.1fF
+* C1 w_n1_0# gnd 4.5fF
+M1000 a_bar A vdd w_n1_0# CMOSP w=20 l=2
++  ad=100 pd=50 as=400 ps=200
+M1001 a_30_6# a_bar vdd w_n1_0# CMOSP w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1002 out B a_30_6# w_n1_0# CMOSP w=20 l=2
++  ad=260 pd=106 as=0 ps=0
+M1003 a_66_6# a_43_n12# out w_n1_0# CMOSP w=20 l=2
++  ad=100 pd=50 as=0 ps=0
+M1004 vdd b_bar a_66_6# w_n1_0# CMOSP w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1005 vdd B b_bar w_n1_0# CMOSP w=20 l=2
++  ad=0 pd=0 as=100 ps=50
+M1006 a_bar A gnd gnd CMOSN w=10 l=2
++  ad=50 pd=30 as=200 ps=120
+M1007 a_29_n32# B gnd gnd CMOSN w=10 l=2
++  ad=160 pd=52 as=0 ps=0
+M1008 out a_43_n12# a_29_n32# gnd CMOSN w=10 l=2
++  ad=130 pd=66 as=0 ps=0
+M1009 a_66_n32# a_bar out gnd CMOSN w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1010 gnd b_bar a_66_n32# gnd CMOSN w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1011 gnd B b_bar gnd CMOSN w=10 l=2
++  ad=0 pd=0 as=50 ps=30
+C0 w_n1_0# gnd 4.5fF
+
+
+
+
+
+.tran 1n 60n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(A) v(B)+2 v(out)+4
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

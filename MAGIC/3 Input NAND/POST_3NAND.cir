@@ -14,11 +14,11 @@ vdB     B     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
 vdC     C     0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
 
 M1000 out C vdd w_0_0# CMOSP w=20 l=2
-+  ad=120 pd=52 as=220 ps=102
++  ad=220 pd=102 as=220 ps=102
 M1001 vdd B out w_0_0# CMOSP w=20 l=2
 +  ad=0 pd=0 as=0 ps=0
-M1002 a_29_6# A vdd w_0_0# CMOSP w=20 l=2
-+  ad=100 pd=50 as=0 ps=0
+M1002 out A vdd w_0_0# CMOSP w=20 l=2
++  ad=0 pd=0 as=0 ps=0
 M1003 a_13_n61# C gnd gnd CMOSN w=30 l=2
 +  ad=180 pd=72 as=150 ps=70
 M1004 a_21_n61# B a_13_n61# gnd CMOSN w=30 l=2

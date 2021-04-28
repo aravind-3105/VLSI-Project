@@ -1,0 +1,130 @@
+* SPICE3 file created from SUM_WI.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 XOR_WO_3/a_59_n30# j3 XOR_WO_3/2INV_1/a_6_87# XOR_WO_3/2INV_1/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1001 XOR_WO_3/a_59_n30# j3 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=800 ps=480
+M1002 XOR_WO_3/a_51_n59# i3 m1_58_165# XOR_WO_3/2INV_0/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=1360 ps=568
+M1003 XOR_WO_3/a_51_n59# i3 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1004 m1_58_165# XOR_WO_3/a_51_n59# XOR_WO_3/a_56_27# XOR_WO_3/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=400 ps=180
+M1005 XOR_WO_3/a_71_27# XOR_WO_3/a_59_n30# m1_58_165# XOR_WO_3/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1006 sum3 i3 XOR_WO_3/a_71_27# XOR_WO_3/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1007 XOR_WO_3/a_56_27# j3 sum3 XOR_WO_3/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=0 ps=0
+M1008 XOR_WO_3/a_63_n51# XOR_WO_3/a_59_n30# m1_0_0# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1009 sum3 XOR_WO_3/a_51_n59# XOR_WO_3/a_63_n51# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1010 XOR_WO_3/a_79_n51# i3 sum3 Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1011 m1_0_0# j3 XOR_WO_3/a_79_n51# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1012 XOR_WO_2/a_59_n30# j2 XOR_WO_2/2INV_1/a_6_87# XOR_WO_2/2INV_1/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1013 XOR_WO_2/a_59_n30# j2 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1014 XOR_WO_2/a_51_n59# i2 m1_58_165# XOR_WO_2/2INV_0/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=0 ps=0
+M1015 XOR_WO_2/a_51_n59# i2 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1016 m1_58_165# XOR_WO_2/a_51_n59# XOR_WO_2/a_56_27# XOR_WO_2/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=400 ps=180
+M1017 XOR_WO_2/a_71_27# XOR_WO_2/a_59_n30# m1_58_165# XOR_WO_2/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1018 sum2 i2 XOR_WO_2/a_71_27# XOR_WO_2/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1019 XOR_WO_2/a_56_27# j2 sum2 XOR_WO_2/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=0 ps=0
+M1020 XOR_WO_2/a_63_n51# XOR_WO_2/a_59_n30# m1_0_0# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1021 sum2 XOR_WO_2/a_51_n59# XOR_WO_2/a_63_n51# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1022 XOR_WO_2/a_79_n51# i2 sum2 Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1023 m1_0_0# j2 XOR_WO_2/a_79_n51# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1024 XOR_WO_1/a_59_n30# j1 XOR_WO_1/2INV_1/a_6_87# XOR_WO_1/2INV_1/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1025 XOR_WO_1/a_59_n30# j1 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1026 XOR_WO_1/a_51_n59# i1 m1_58_165# XOR_WO_1/2INV_0/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=0 ps=0
+M1027 XOR_WO_1/a_51_n59# i1 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1028 m1_58_165# XOR_WO_1/a_51_n59# XOR_WO_1/a_56_27# XOR_WO_1/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=400 ps=180
+M1029 XOR_WO_1/a_71_27# XOR_WO_1/a_59_n30# m1_58_165# XOR_WO_1/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1030 sum1 i1 XOR_WO_1/a_71_27# XOR_WO_1/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1031 XOR_WO_1/a_56_27# j1 sum1 XOR_WO_1/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=0 ps=0
+M1032 XOR_WO_1/a_63_n51# XOR_WO_1/a_59_n30# m1_0_0# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1033 sum1 XOR_WO_1/a_51_n59# XOR_WO_1/a_63_n51# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1034 XOR_WO_1/a_79_n51# i1 sum1 Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1035 m1_0_0# j1 XOR_WO_1/a_79_n51# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1036 XOR_WO_0/a_59_n30# j0 XOR_WO_0/2INV_1/a_6_87# XOR_WO_0/2INV_1/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1037 XOR_WO_0/a_59_n30# j0 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1038 XOR_WO_0/a_51_n59# i0 m1_58_165# XOR_WO_0/2INV_0/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=0 ps=0
+M1039 XOR_WO_0/a_51_n59# i0 m1_0_0# Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1040 m1_58_165# XOR_WO_0/a_51_n59# XOR_WO_0/a_56_27# XOR_WO_0/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=400 ps=180
+M1041 XOR_WO_0/a_71_27# XOR_WO_0/a_59_n30# m1_58_165# XOR_WO_0/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1042 sum0 i0 XOR_WO_0/a_71_27# XOR_WO_0/w_50_21# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1043 XOR_WO_0/a_56_27# j0 sum0 XOR_WO_0/w_50_21# pfet w=40 l=2
++  ad=0 pd=0 as=0 ps=0
+M1044 XOR_WO_0/a_63_n51# XOR_WO_0/a_59_n30# m1_0_0# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1045 sum0 XOR_WO_0/a_51_n59# XOR_WO_0/a_63_n51# Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1046 XOR_WO_0/a_79_n51# i0 sum0 Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1047 m1_0_0# j0 XOR_WO_0/a_79_n51# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+C0 j1 i1 1.9fF
+C1 sum2 XOR_WO_2/a_56_27# 1.1fF
+C2 i3 j3 1.9fF
+C3 XOR_WO_0/a_56_27# sum0 1.1fF
+C4 j0 i0 1.9fF
+C5 sum1 XOR_WO_1/a_56_27# 1.1fF
+C6 j2 i2 1.9fF
+C7 sum3 XOR_WO_3/a_56_27# 1.1fF
+C8 sum0 gnd! 1.5fF
+C9 XOR_WO_0/w_50_21# gnd! 2.7fF
+C10 XOR_WO_0/a_51_n59# gnd! 1.6fF
+C11 i0 gnd! 1.9fF
+C12 j0 gnd! 2.9fF
+C13 sum1 gnd! 1.5fF
+C14 XOR_WO_1/w_50_21# gnd! 2.7fF
+C15 XOR_WO_1/a_51_n59# gnd! 1.6fF
+C16 i1 gnd! 1.8fF
+C17 j1 gnd! 1.7fF
+C18 sum2 gnd! 1.5fF
+C19 XOR_WO_2/w_50_21# gnd! 2.7fF
+C20 XOR_WO_2/a_51_n59# gnd! 1.6fF
+C21 i2 gnd! 1.8fF
+C22 j2 gnd! 1.7fF
+C23 sum3 gnd! 1.5fF
+C24 XOR_WO_3/w_50_21# gnd! 2.7fF
+C25 m1_58_165# gnd! 6.3fF
+C26 XOR_WO_3/a_51_n59# gnd! 1.6fF
+C27 i3 gnd! 1.9fF
+C28 m1_0_0# gnd! 7.5fF
+C29 j3 gnd! 2.9fF
