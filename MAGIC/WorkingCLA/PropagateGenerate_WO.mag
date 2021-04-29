@@ -1,0 +1,213 @@
+magic
+tech scmos
+timestamp 1619651442
+<< metal1 >>
+rect -254 263 427 267
+rect -254 59 -250 263
+rect -247 255 436 259
+rect -247 69 -243 255
+rect -204 247 282 251
+rect -236 5 -231 113
+rect -204 106 -200 247
+rect -197 236 291 240
+rect -197 105 -193 236
+rect -140 226 133 231
+rect -204 78 -200 80
+rect -197 54 -193 64
+rect -236 -45 -231 0
+rect -204 -11 -200 26
+rect -154 24 -149 158
+rect -140 67 -136 226
+rect -32 218 146 223
+rect -207 -14 -200 -11
+rect -170 21 -149 24
+rect -170 17 -165 21
+rect -207 -21 -203 -14
+rect -213 -59 -209 -35
+rect -170 -48 -165 12
+rect -148 -15 -143 13
+rect -133 5 -128 113
+rect -101 105 -97 184
+rect -94 105 -90 175
+rect -101 77 -96 84
+rect -101 52 -97 62
+rect -94 62 -86 67
+rect -94 52 -90 62
+rect -101 -6 -97 26
+rect -51 21 -46 158
+rect -148 -18 -129 -15
+rect -133 -23 -129 -18
+rect -96 -24 -91 -21
+rect -139 -59 -135 -39
+rect -96 -48 -91 -41
+rect -58 -45 -53 0
+rect -42 -16 -38 72
+rect -32 67 -28 218
+rect -20 189 -15 195
+rect -20 33 -15 184
+rect -4 180 1 195
+rect -4 121 1 175
+rect 57 174 493 178
+rect 57 165 61 174
+rect 201 169 205 174
+rect 186 165 234 169
+rect 345 165 349 174
+rect 489 165 493 174
+rect 165 66 177 71
+rect -20 29 3 33
+rect 138 29 152 33
+rect 287 29 292 33
+rect 432 29 437 33
+rect 4 4 156 5
+rect 254 4 300 5
+rect 399 4 447 5
+rect 4 0 548 4
+rect -42 -19 -25 -16
+rect -29 -32 -25 -19
+rect 25 -23 30 0
+rect 54 -28 58 -11
+rect -35 -59 -31 -35
+rect 8 -48 13 -43
+rect 48 -59 52 -39
+rect 91 -48 96 -21
+<< m2contact >>
+rect 427 262 432 267
+rect 436 254 441 259
+rect -247 64 -242 69
+rect -254 54 -249 59
+rect 282 246 287 251
+rect 291 235 296 240
+rect 133 226 138 231
+rect -154 158 -149 163
+rect -204 73 -199 78
+rect -198 64 -193 69
+rect -205 54 -200 59
+rect -236 0 -231 5
+rect 146 218 151 223
+rect -101 184 -96 189
+rect -141 62 -136 67
+rect -170 12 -165 17
+rect -148 13 -143 18
+rect -94 175 -89 180
+rect -51 158 -46 163
+rect -101 72 -96 77
+rect -102 62 -97 67
+rect -86 62 -81 67
+rect -133 0 -128 5
+rect -43 72 -38 77
+rect -58 0 -53 5
+rect -101 -11 -96 -6
+rect -162 -23 -157 -18
+rect -170 -53 -165 -48
+rect -33 62 -28 67
+rect -20 195 -15 200
+rect -20 184 -15 189
+rect -4 195 1 200
+rect -4 175 1 180
+rect 14 158 19 163
+rect 146 121 151 126
+rect 291 121 296 126
+rect 436 121 441 126
+rect 118 78 123 83
+rect 268 78 273 83
+rect 411 78 416 83
+rect 555 78 560 83
+rect 160 66 165 71
+rect 133 29 138 34
+rect 282 29 287 34
+rect 427 29 432 34
+rect -1 0 4 5
+rect 53 -11 58 -6
+rect -96 -53 -91 -48
+rect 8 -53 13 -48
+rect 91 -53 96 -48
+<< metal2 >>
+rect -20 200 -15 308
+rect -4 200 1 308
+rect 133 231 138 308
+rect -96 184 -20 189
+rect -89 175 -4 180
+rect -149 158 -51 163
+rect -46 158 14 163
+rect -199 73 -145 78
+rect -242 64 -198 69
+rect -249 54 -205 59
+rect -148 56 -145 73
+rect -96 72 -43 77
+rect -136 62 -102 67
+rect -81 62 -33 67
+rect -148 18 -143 56
+rect -254 12 -170 17
+rect -231 0 -133 5
+rect -128 0 -58 5
+rect -53 0 -1 5
+rect -162 -18 -157 0
+rect -96 -11 53 -6
+rect 118 -14 123 78
+rect 133 34 138 226
+rect 146 223 151 308
+rect 146 126 151 218
+rect 282 251 287 308
+rect 160 71 164 73
+rect 268 -14 273 78
+rect 282 34 287 246
+rect 291 240 296 308
+rect 291 126 296 235
+rect 427 267 432 308
+rect 411 -14 416 78
+rect 427 34 432 262
+rect 436 259 441 308
+rect 436 126 441 254
+rect 555 -14 560 78
+rect -165 -53 -96 -48
+rect -91 -53 8 -48
+rect 13 -53 91 -48
+use 2AND_WO  2AND_WO_2
+timestamp 1619444932
+transform 0 1 -184 -1 0 112
+box -1 -50 32 33
+use 2AND_WO  2AND_WO_0
+timestamp 1619444932
+transform 0 1 -81 -1 0 112
+box -1 -50 32 33
+use 2AND_WO  2AND_WO_3
+timestamp 1619444932
+transform 0 1 -184 -1 0 54
+box -1 -50 32 33
+use 2AND_WO  2AND_WO_1
+timestamp 1619444932
+transform 0 1 -81 -1 0 53
+box -1 -50 32 33
+use XOR_WO  XOR_WO_0
+timestamp 1619560144
+transform 1 0 20 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_1
+timestamp 1619560144
+transform 1 0 166 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_2
+timestamp 1619560144
+transform 1 0 311 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_3
+timestamp 1619560144
+transform 1 0 456 0 1 92
+box -20 -92 103 77
+use 2INV  2INV_0
+timestamp 1619542334
+transform 0 1 -281 -1 0 -21
+box 0 45 24 116
+use 2INV  2INV_1
+timestamp 1619542334
+transform 0 1 -207 -1 0 -21
+box 0 45 24 116
+use 2INV  2INV_2
+timestamp 1619542334
+transform 0 1 -103 -1 0 -21
+box 0 45 24 116
+use 2INV  2INV_3
+timestamp 1619542334
+transform 0 1 -20 -1 0 -21
+box 0 45 24 116
+<< end >>

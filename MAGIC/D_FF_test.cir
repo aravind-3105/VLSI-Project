@@ -1,0 +1,46 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_N={20*LAMBDA}
+.param width_P={40*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vd     D     0 pulse 1.8 0 0ns 0ps 0ps 5ns  25ns
+vclk   clk   0 pulse 0 1.8 0ns 0ps 0ps 10ns  20ns
+
+M1000 lp1 D vdd w_n2_12# CMOSP w=40 l=2
++  ad=160 pd=88 as=1120 ps=376
+M1001 a_11_n39# clk lp1 w_n2_12# CMOSP w=40 l=2
++  ad=600 pd=110 as=0 ps=0
+M1002 a_47_18# clk vdd w_n2_12# CMOSP w=40 l=2
++  ad=600 pd=110 as=0 ps=0
+M1003 g a_47_18# vdd w_n2_12# CMOSP w=40 l=2
++  ad=680 pd=114 as=0 ps=0
+M1004 Q g vdd w_n2_12# CMOSP w=40 l=2
++  ad=280 pd=94 as=0 ps=0
+M1005 a_11_n39# D gnd gnd CMOSN w=20 l=2
++  ad=460 pd=86 as=520 ps=212
+M1006 pn1 clk gnd gnd CMOSN w=20 l=2
++  ad=280 pd=68 as=0 ps=0
+M1007 a_47_18# a_11_n39# pn1 gnd CMOSN w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+M1008 pn2 a_47_18# gnd gnd CMOSN w=20 l=2
++  ad=200 pd=60 as=0 ps=0
+M1009 g clk pn2 gnd CMOSN w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+M1010 Q g gnd gnd CMOSN w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+C0 w_n2_12# gnd 6.9fF
+
+
+.tran 1n 20n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+run
+set curplottitle= "Aravind Narayanan-2019102014-FlipFlop"
+plot (v(D)/1.8) (v(clk)/1.8)+2 (v(Q)/1.8)+4
+.endc
+

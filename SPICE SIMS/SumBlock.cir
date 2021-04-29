@@ -1,0 +1,75 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param W = {10*LAMBDA}
+.param width_N={10*LAMBDA}
+.param width_P={20*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vd10     P1     0 pulse 1.8 0 0ns 100ps 100ps 20ns  20ns
+vd20     G1     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
+vd11     P2     0 pulse 1.8 0 0ns 100ps 100ps 30ns  40ns
+vd21     Cout2     0 pulse 0 1.8 0ns 100ps 100ps 10ns  20ns
+vd12     P3     0 pulse 0 1.8 0ns 100ps 100ps 15ns  30ns
+vd22     Cout3     0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
+vd13     P4     0 pulse 0 1.8 0ns 100ps 100ps 10ns  20ns
+
+vdC Ci gnd 0
+
+.subckt xor_subckt a b y vdd gnd
+//Top inverter
+M1      a_bar       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M2      a_bar       a       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+//Bottom Inverter
+M3      b_bar       b       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M4      b_bar       b       gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+//Layer 2
+M5      J1   a_bar    vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M6      y       b       J1     J1  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M7      y       a       J2     J2  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+M8      J2      b     gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+//Layer 3
+M9      J11       b_bar    vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M10      y       a         J11     J11  CMOSP   W={width_P}   L={2*LAMBDA}
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+M11      y     a_bar       J22     J22  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+M12      J22     b_bar     gnd     gnd  CMOSN   W={width_N}   L={2*LAMBDA}
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+.ends xor_subckt
+
+// Sum 
+x18 P1  Ci   Sum1 vdd gnd xor_subckt
+x19 P2  G1   Sum2 vdd gnd xor_subckt
+x20 P3 Cout2 Sum3 vdd gnd xor_subckt
+x21 P4 Cout3 Sum4 vdd gnd xor_subckt
+
+.tran 1n 60n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(Sum1) v(Ci)+2  v(P1)+4  
+set curplottitle= "Aravind Narayanan-2019102014"
+plot v(Sum2) v(G1)+2  v(P2)+4  
+set curplo3title= "Aravind Narayanan-2019102014"
+plot v(Sum3) v(Cout2)+2  v(P3)+4  
+set curplottitle= "Aravind Narayanan-2019102014"
+plot v(Sum4) v(Cout3)+2  v(P4)+4  
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

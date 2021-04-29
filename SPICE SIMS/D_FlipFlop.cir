@@ -1,8 +1,8 @@
 .include TSMC_180nm.txt
 .param SUPPLY=1.8
 .param LAMBDA=0.09u
-.param width_N={20*LAMBDA}
-.param width_P={40*LAMBDA}
+.param width_N={10*LAMBDA}
+.param width_P={20*LAMBDA}
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
@@ -18,10 +18,10 @@ M1      nand       b       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
 M2      nand       a       vdd     vdd  CMOSP   W={width_P}   L={2*LAMBDA}
 + AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
-M3      nand       a       J     J  CMOSN   W={width_N}   L={2*LAMBDA}
-+ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
-M4      J          b      gnd gnd   CMOSN   W={width_N}   L={2*LAMBDA}
-+ AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+M3      nand       a       J     J  CMOSN   W={2*width_N}   L={2*LAMBDA}
++ AS={5*2*width_N*LAMBDA} PS={10*LAMBDA+2*2*width_N} AD={5*2*width_N*LAMBDA} PD={10*LAMBDA+2*2*width_N}
+M4      J          b      gnd gnd   CMOSN   W={2*width_N}   L={2*LAMBDA}
++ AS={5*2*width_N*LAMBDA} PS={10*LAMBDA+2*2*width_N} AD={5*2*width_N*LAMBDA} PD={10*LAMBDA+2*2*width_N}
 .ends nand_subckt
 
 .subckt latch d d_bar e Q Q_bar vdd gnd 
