@@ -1,0 +1,6 @@
+.tran 10ps 40ns
+.measure tran rise
++TRIG v(clk) VAL = 0.9V RISE = 1 TARG v(Q) VAL = 0.9V RISE = 1
+.measure tran fall
++TRIG v(clk) VAL = 0.9V RISE = 2 TARG v(Q) VAL = 0.9V FALL = 1
+.measure tran PropDelay param='(rise+fall)/2' goal = 0

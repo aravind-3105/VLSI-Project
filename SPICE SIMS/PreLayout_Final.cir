@@ -7,14 +7,25 @@
 .global gnd vdd
 
 Vdd	vdd	gnd	'SUPPLY'
-vdA1     a1_d     0 pulse 1.8 0 0ns 100ps 100ps 5ns  30ns
-vdB1     b1_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
-vdA2     a2_d     0 pulse 1.8 0 0ns 100ps 100ps 5ns  30ns
-vdB2     b2_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
-vdA3     a3_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
-vdB3     b3_d     0 pulse 1.8 0 0ns 100ps 100ps 20ns  30ns
-vdA4     a4_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
-vdB4     b4_d     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
+vdA1     a1_d     0 pulse 0 0 0ns 100ps 100ps 5ns  30ns
+vdA2     a2_d     0 pulse 1.8 0 0ns 100ps 100ps 30ns  30ns
+vdA3     a3_d     0 pulse 0 0 0ns 100ps 100ps 10ns  30ns
+vdA4     a4_d     0 pulse 1.8 0 0ns 100ps 100ps 30ns  30ns
+
+vdB1     b1_d     0 pulse 0 0 0ns 100ps 100ps 10ns  30ns
+vdB2     b2_d     0 pulse 0 0 0ns 100ps 100ps 10ns  30ns
+vdB3     b3_d     0 pulse 1.8 0 0ns 100ps 100ps 30ns  30ns
+
+vdB4     b4_d     0 pulse 1.8 0 0ns 100ps 100ps 30ns  30ns
+* vdA1     a1_d     gnd 0   
+* vdA2     a2_d     gnd 1.8
+* vdA3     a3_d     gnd 0   
+* vdA4     a4_d     gnd 1.8 
+
+* vdB1     b1_d     gnd 0   
+* vdB2     b2_d     gnd 0  
+* vdB3     b3_d     gnd 1.8 
+* vdB4     b4_d     gnd 1.8
 
 vdC Ci 0 pulse 0 0 0ns 100ps 100ps 20ns 60ns
 vclk   clk   0 pulse 0   1.8 0ns 100ps 100ps 20ns  40ns

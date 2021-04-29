@@ -130,6 +130,7 @@ M1062 2AND_WO_3/a_13_n43# a3 gnd Gnd nfet w=20 l=2
 +  ad=120 pd=52 as=0 ps=0
 M1063 g3_bar b3 2AND_WO_3/a_13_n43# Gnd nfet w=20 l=2
 +  ad=140 pd=54 as=0 ps=0
+
 M1064 g0_bar a0 vdd 2AND_WO_0/w_0_0# pfet w=20 l=2
 +  ad=120 pd=52 as=0 ps=0
 M1065 vdd b0 g0_bar 2AND_WO_0/w_0_0# pfet w=20 l=2
@@ -138,6 +139,7 @@ M1066 2AND_WO_0/a_13_n43# a0 gnd Gnd nfet w=20 l=2
 +  ad=120 pd=52 as=0 ps=0
 M1067 g0_bar b0 2AND_WO_0/a_13_n43# Gnd nfet w=20 l=2
 +  ad=140 pd=54 as=0 ps=0
+
 M1068 g2_bar a2 vdd 2AND_WO_2/w_0_0# pfet w=20 l=2
 +  ad=120 pd=52 as=0 ps=0
 M1069 vdd b2 g2_bar 2AND_WO_2/w_0_0# pfet w=20 l=2

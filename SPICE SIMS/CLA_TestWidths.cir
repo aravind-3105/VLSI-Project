@@ -236,7 +236,7 @@ x8 a4 b4 G4 vdd gnd and_subckt
         x16 P4 P3 P2 G1 T4_3 vdd gnd and4_subckt
         x17 G4 T4_1 T4_2 T4_3 Cout4 vdd gnd or4_subckt
 
-// Sum 
+// Sum pastebin
 x18 P1  gnd  Sum1 vdd gnd xor_subckt
 x19 P2  G1   Sum2 vdd gnd xor_subckt
 x20 P3 Cout2 Sum3 vdd gnd xor_subckt
