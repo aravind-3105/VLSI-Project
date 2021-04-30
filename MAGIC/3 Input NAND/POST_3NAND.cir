@@ -1,0 +1,44 @@
+* SPICE3 file created from 3AND.ext - technology: scmos
+.option scale=0.09u
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param W = {10*LAMBDA}
+.param width_N={10*LAMBDA}
+.param width_P={20*LAMBDA}
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vdA     A     0 pulse 1.8 0 0ns 100ps 100ps 5ns  30ns
+vdB     B     0 pulse 1.8 0 0ns 100ps 100ps 10ns  30ns
+vdC     C     0 pulse 1.8 0 0ns 100ps 100ps 20ns  40ns
+
+M1000 out C vdd w_0_0# CMOSP w=20 l=2
++  ad=220 pd=102 as=220 ps=102
+M1001 vdd B out w_0_0# CMOSP w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1002 out A vdd w_0_0# CMOSP w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_13_n61# C gnd gnd CMOSN w=30 l=2
++  ad=180 pd=72 as=150 ps=70
+M1004 a_21_n61# B a_13_n61# gnd CMOSN w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1005 out A a_21_n61# gnd CMOSN w=30 l=2
++  ad=210 pd=74 as=0 ps=0
+C0 w_0_0# gnd 1.5fF
+
+
+
+.tran 1n 80n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(A)
+plot v(B)
+plot v(C)
+plot v(out)
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

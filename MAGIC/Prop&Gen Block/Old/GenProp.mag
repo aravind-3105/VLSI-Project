@@ -1,0 +1,34 @@
+magic
+tech scmos
+timestamp 1619562286
+<< metal1 >>
+rect 57 174 493 178
+rect 57 165 61 174
+rect 201 165 205 174
+rect 345 165 349 174
+rect 489 165 493 174
+rect -236 80 -153 113
+rect 108 0 156 5
+rect 252 0 300 5
+rect 399 0 447 5
+use 2AND_WO  2AND_WO_0
+timestamp 1619444932
+transform 0 1 -62 -1 0 120
+box -1 -50 32 33
+use XOR_WO  XOR_WO_0
+timestamp 1619560144
+transform 1 0 20 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_1
+timestamp 1619560144
+transform 1 0 166 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_2
+timestamp 1619560144
+transform 1 0 311 0 1 92
+box -20 -92 103 77
+use XOR_WO  XOR_WO_3
+timestamp 1619560144
+transform 1 0 456 0 1 92
+box -20 -92 103 77
+<< end >>

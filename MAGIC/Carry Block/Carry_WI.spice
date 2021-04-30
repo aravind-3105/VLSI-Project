@@ -1,0 +1,172 @@
+* SPICE3 file created from Carry_WI.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 c4 m1_409_n151# 2INV_8/a_6_87# 2INV_8/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1001 c4 m1_409_n151# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=1640 ps=868
+M1002 4NOR_WO_0/a_13_6# c4_term1 vdd 4NOR_WO_0/w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=2260 ps=1046
+M1003 4NOR_WO_0/a_21_6# c4_term2 4NOR_WO_0/a_13_6# 4NOR_WO_0/w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=0 ps=0
+M1004 4NOR_WO_0/a_29_6# c4_term3 4NOR_WO_0/a_21_6# 4NOR_WO_0/w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=0 ps=0
+M1005 m1_409_n151# g4 4NOR_WO_0/a_29_6# 4NOR_WO_0/w_0_0# pfet w=80 l=2
++  ad=560 pd=174 as=0 ps=0
+M1006 m1_409_n151# c4_term1 gnd Gnd nfet w=10 l=2
++  ad=120 pd=64 as=0 ps=0
+M1007 gnd c4_term2 m1_409_n151# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1008 m1_409_n151# c4_term3 gnd Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1009 gnd g4 m1_409_n151# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1010 c4_term3 m1_683_20# 2INV_7/a_6_87# 2INV_7/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1011 c4_term3 m1_683_20# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1012 m1_683_20# p4 vdd 4NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=240 pd=104 as=0 ps=0
+M1013 vdd p3 m1_683_20# 4NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1014 m1_683_20# p2 vdd 4NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1015 vdd g1 m1_683_20# 4NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1016 4NAND_WO_0/a_13_n78# p4 gnd Gnd nfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1017 4NAND_WO_0/a_21_n78# p3 4NAND_WO_0/a_13_n78# Gnd nfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1018 4NAND_WO_0/a_29_n78# p2 4NAND_WO_0/a_21_n78# Gnd nfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1019 m1_683_20# g1 4NAND_WO_0/a_29_n78# Gnd nfet w=40 l=2
++  ad=280 pd=94 as=0 ps=0
+M1020 3NOR_WO_0/a_14_3# c3_term1 vdd 3NOR_WO_0/w_1_n3# pfet w=60 l=2
++  ad=360 pd=132 as=0 ps=0
+M1021 3NOR_WO_0/a_22_3# g3 3NOR_WO_0/a_14_3# 3NOR_WO_0/w_1_n3# pfet w=60 l=2
++  ad=360 pd=132 as=0 ps=0
+M1022 m1_194_n80# c3_term2 3NOR_WO_0/a_22_3# 3NOR_WO_0/w_1_n3# pfet w=60 l=2
++  ad=420 pd=134 as=0 ps=0
+M1023 m1_194_n80# c3_term1 gnd Gnd nfet w=10 l=2
++  ad=130 pd=66 as=0 ps=0
+M1024 gnd g3 m1_194_n80# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1025 m1_194_n80# c3_term2 gnd Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1026 c3 m1_194_n80# 2INV_3/a_6_87# 2INV_3/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1027 c3 m1_194_n80# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1028 c4_term2 m1_526_53# 2INV_6/a_6_87# 2INV_6/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1029 c4_term2 m1_526_53# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1030 m1_526_53# p4 vdd 3NAND_WO_1/w_0_0# pfet w=20 l=2
++  ad=220 pd=102 as=0 ps=0
+M1031 vdd p3 m1_526_53# 3NAND_WO_1/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1032 m1_526_53# g2 vdd 3NAND_WO_1/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1033 3NAND_WO_1/a_13_n61# p4 gnd Gnd nfet w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1034 3NAND_WO_1/a_21_n61# p3 3NAND_WO_1/a_13_n61# Gnd nfet w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1035 m1_526_53# g2 3NAND_WO_1/a_21_n61# Gnd nfet w=30 l=2
++  ad=210 pd=74 as=0 ps=0
+M1036 c4_term1 m1_398_36# 2INV_5/a_6_87# 2INV_5/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1037 c4_term1 m1_398_36# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1038 m1_398_36# p4 vdd 2NAND_WO_2/w_0_0# pfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1039 vdd g3 m1_398_36# 2NAND_WO_2/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1040 2NAND_WO_2/a_13_n43# p4 gnd Gnd nfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1041 m1_398_36# g3 2NAND_WO_2/a_13_n43# Gnd nfet w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+M1042 c3_term2 m1_252_46# 2INV_4/a_6_87# 2INV_4/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1043 c3_term2 m1_252_46# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1044 m1_252_46# g1 vdd 3NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=220 pd=102 as=0 ps=0
+M1045 vdd p2 m1_252_46# 3NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1046 m1_252_46# p3 vdd 3NAND_WO_0/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1047 3NAND_WO_0/a_13_n61# g1 gnd Gnd nfet w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1048 3NAND_WO_0/a_21_n61# p2 3NAND_WO_0/a_13_n61# Gnd nfet w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1049 m1_252_46# p3 3NAND_WO_0/a_21_n61# Gnd nfet w=30 l=2
++  ad=210 pd=74 as=0 ps=0
+M1050 c3_term1 m1_145_29# 2INV_2/a_6_87# 2INV_2/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1051 c3_term1 m1_145_29# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1052 m1_145_29# p3 vdd 2NAND_WO_1/w_0_0# pfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1053 vdd g2 m1_145_29# 2NAND_WO_1/w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1054 2NAND_WO_1/a_13_n43# p3 gnd Gnd nfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1055 m1_145_29# g2 2NAND_WO_1/a_13_n43# Gnd nfet w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+M1056 2NOR_WO_0/a_13_5# c2_term1 vdd w_38_n91# pfet w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1057 m1_19_n37# g2 2NOR_WO_0/a_13_5# w_38_n91# pfet w=40 l=2
++  ad=280 pd=94 as=0 ps=0
+M1058 m1_19_n37# c2_term1 gnd Gnd nfet w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1059 gnd g2 m1_19_n37# Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1060 c2 m1_19_n37# 2INV_1/a_6_87# 2INV_1/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1061 c2 m1_19_n37# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1062 c2_term1 m1_25_30# 2INV_0/a_6_87# 2INV_0/w_0_81# pfet w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1063 c2_term1 m1_25_30# gnd Gnd nfet w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+M1064 m1_25_30# g1 vdd w_7_77# pfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1065 vdd p2 m1_25_30# w_7_77# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1066 2NAND_WO_0/a_13_n43# g1 gnd Gnd nfet w=20 l=2
++  ad=120 pd=52 as=0 ps=0
+M1067 m1_25_30# p2 2NAND_WO_0/a_13_n43# Gnd nfet w=20 l=2
++  ad=140 pd=54 as=0 ps=0
+C0 p2 g1 7.3fF
+C1 g4 c4_term3 2.9fF
+C2 c4_term3 c4_term2 2.3fF
+C3 p3 g2 6.1fF
+C4 p2 g2 2.1fF
+C5 g3 p4 2.9fF
+C6 c4_term2 c4_term1 1.5fF
+C7 g3 p3 2.0fF
+C8 p4 p3 4.3fF
+C9 g2 c2_term1 1.2fF
+C10 g3 c3_term2 1.1fF
+C11 g4 g3 1.9fF
+C12 p3 p2 4.7fF
+C13 g4 p4 2.0fF
+C14 w_7_77# gnd! 1.3fF
+C15 w_38_n91# gnd! 1.8fF
+C16 2NAND_WO_1/w_0_0# gnd! 1.0fF
+C17 c3_term1 gnd! 1.2fF
+C18 3NAND_WO_0/w_0_0# gnd! 1.3fF
+C19 g3 gnd! 12.0fF
+C20 2NAND_WO_2/w_0_0# gnd! 1.0fF
+C21 c4_term1 gnd! 1.5fF
+C22 3NAND_WO_1/w_0_0# gnd! 1.3fF
+C23 c4_term2 gnd! 1.9fF
+C24 3NOR_WO_0/w_1_n3# gnd! 3.1fF
+C25 g1 gnd! 10.8fF
+C26 p2 gnd! 4.7fF
+C27 4NAND_WO_0/w_0_0# gnd! 1.7fF
+C28 gnd gnd! 14.0fF
+C29 c4_term3 gnd! 4.6fF
+C30 g4 gnd! 12.2fF
+C31 4NOR_WO_0/w_0_0# gnd! 4.6fF

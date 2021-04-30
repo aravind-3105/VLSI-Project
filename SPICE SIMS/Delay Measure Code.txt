@@ -3,4 +3,38 @@
 +TRIG v(clk) VAL = 0.9V RISE = 1 TARG v(Q) VAL = 0.9V RISE = 1
 .measure tran fall
 +TRIG v(clk) VAL = 0.9V RISE = 2 TARG v(Q) VAL = 0.9V FALL = 1
-.measure tran PropDelay param='(rise+fall)/2' goal = 0
+.measure tran FlipFlopDelay param='(rise+fall)/2' goal = 0
+
+
+
+
+
+For Propagate Block:
+.measure tran fall
++TRIG v(a1) VAL = 0.9V RISE = 1 TARG v(P1) VAL = 0.9V FALL = 1
+.measure tran rise
++TRIG v(a1) VAL = 0.9V FALL = 2 TARG v(P1) VAL = 0.9V RISE = 1
+.measure tran propagateDelay param='(rise+fall)/2' goal = 0
+
+For Generate Block
+.measure tran fall
++TRIG v(a1) VAL = 0.9V FALL = 2 TARG v(G1) VAL = 0.9V FALL = 1
+.measure tran rise
++TRIG v(a1) VAL = 0.9V RISE = 1 TARG v(G1) VAL = 0.9V RISE = 1
+.measure tran GenerateDelay param='(rise+fall)/2' goal = 0
+
+
+For carry:
+.measure tran rise
++TRIG v(P1) VAL = 0.9V RISE = 1 TARG v(C4) VAL = 0.9V RISE = 1
+.measure tran FALL
++TRIG v(P1) VAL = 0.9V FALL = 1 TARG v(C4) VAL = 0.9V FALL = 1
+.measure tran CarryDelay param='(rise+fall)/2' goal = 0
+
+
+For overall CLA:
+.measure tran rise
++TRIG v(a1) VAL = 0.9V RISE = 1 TARG v(sum4) VAL = 0.9V RISE = 1
+.measure tran fall
++TRIG v(a1) VAL = 0.9V FALL = 2 TARG v(sum4) VAL = 0.9V FALL = 2
+.measure tran CLADelay param='(rise+fall)/2' goal = 0

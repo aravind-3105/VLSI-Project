@@ -1,0 +1,56 @@
+* SPICE3 file created from 3AND.ext - technology: scmos
+.option scale=0.09u
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.global gnd vdd
+
+Vdd	vdd	gnd	'SUPPLY'
+vdA     A     0 pulse 1.8 0 0ns 100ps 100ps 20ns  30ns
+vdB     B     0 pulse 1.8 0 30ns 100ps 100ps 10ns  30ns
+//B-Inverter
+M1000 B_bar B vdd 2INV_1/w_0_81# CMOSP w=20 l=2
++  ad=100 pd=50 as=100 ps=50
+M1001 B_bar B gnd gnd CMOSN w=10 l=2
++  ad=50 pd=30 as=200 ps=120
+//A-Inverter
+M1002 A_bar A vdd 2INV_0/w_0_81# CMOSP w=20 l=2
++  ad=100 pd=50 as=340 ps=142
+M1003 A_bar A gnd gnd CMOSN w=10 l=2
++  ad=50 pd=30 as=0 ps=0
+
+
+M1004 vdd A_bar a_56_27# w_50_21# CMOSP w=40 l=2
++  ad=0 pd=0 as=400 ps=180
+M1007 a_56_27# B out w_50_21# CMOSP w=40 l=2
++  ad=0 pd=0 as=0 ps=0
+
+M1005 a_71_27# B_bar vdd w_50_21# CMOSP w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+M1006 out A a_71_27# w_50_21# CMOSP w=40 l=2
++  ad=240 pd=92 as=0 ps=0
+
+
+
+M1008 a_63_n51# B_bar gnd gnd CMOSN w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1009 out A_bar a_63_n51# gnd CMOSN w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1010 a_79_n51# A out gnd CMOSN w=10 l=2
++  ad=60 pd=32 as=0 ps=0
+M1011 gnd B a_79_n51# gnd CMOSN w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+
+
+
+.tran 1n 60n
+.control
+set hcopypscolor = 1
+set color0=white
+set color1=black
+
+run
+plot v(a_bar) v(b_bar)+2
+plot v(A) v(B)+2 v(out)+4
+set curplottitle= "Aravind Narayanan-2019102014"
+.endc

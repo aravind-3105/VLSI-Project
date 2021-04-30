@@ -1,0 +1,17 @@
+* SPICE3 file created from 3AND_WO.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 a_13_6# a_9_n28# a_6_6# w_0_0# pfet w=20 l=2
++  ad=220 pd=102 as=220 ps=102
+M1001 a_6_6# a_17_n21# a_13_6# w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1002 a_13_6# a_25_n14# a_6_6# w_0_0# pfet w=20 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_13_n61# a_9_n28# a_6_n61# Gnd nfet w=30 l=2
++  ad=180 pd=72 as=150 ps=70
+M1004 a_21_n61# a_17_n21# a_13_n61# Gnd nfet w=30 l=2
++  ad=180 pd=72 as=0 ps=0
+M1005 a_13_6# a_25_n14# a_21_n61# Gnd nfet w=30 l=2
++  ad=210 pd=74 as=0 ps=0
+C0 w_0_0# gnd! 1.3fF

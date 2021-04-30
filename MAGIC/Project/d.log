@@ -1,0 +1,5 @@
+unknown option "-under"
+unknown option "-under"
+    while executing
+".text tag configure _tag1 -under 1"
+    (command bound to event)

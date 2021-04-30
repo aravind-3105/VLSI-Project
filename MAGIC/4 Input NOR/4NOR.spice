@@ -1,0 +1,21 @@
+* SPICE3 file created from 4NOR.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 a_13_6# D vdd w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=400 ps=170
+M1001 a_21_6# C a_13_6# w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=0 ps=0
+M1002 a_29_6# B a_21_6# w_0_0# pfet w=80 l=2
++  ad=480 pd=172 as=0 ps=0
+M1003 out A a_29_6# w_0_0# pfet w=80 l=2
++  ad=560 pd=174 as=0 ps=0
+M1004 out D gnd Gnd nfet w=10 l=2
++  ad=120 pd=64 as=180 ps=96
+M1005 gnd C out Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1006 out B gnd Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+M1007 gnd A out Gnd nfet w=10 l=2
++  ad=0 pd=0 as=0 ps=0
+C0 w_0_0# gnd! 4.9fF
